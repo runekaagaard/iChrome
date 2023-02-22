@@ -1,0 +1,45 @@
+body {
+  background-color: #FFDACB;
+}
+
+html, body, webview {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+html, body {
+  overflow: hidden;
+}
+
+html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
+  display: none;
+}
+
+#device {
+  margin: 0 auto;
+}
+
+#icons {
+  text-align: center;
+  height: 40px;
+  user-select: none;
+}
+
+.icon {
+  display: inline-block;
+  margin-right: 8px;
+  user-select: none;
+  color: grey;
+  cursor: pointer;
+}
+
+/* This makes the webview support border-radius.
+   I love you Hiren! <3
+   http://hirendave.tech/mobile-application/css-border-radius-not-working-in-android-webview-or-chrome/ */
+.device-screen {
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  overflow: hidden;
+}

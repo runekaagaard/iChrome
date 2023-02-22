@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>iChrome</title>
+  <link href="ichrome.css" rel="stylesheet" >
+  <link href="devices.css" rel="stylesheet" >
+</head>
+
+<body>
+  <div id="icons">
+    <span id="plus" class="icon">+</span>
+    <span id="minus" class="icon">-</span>
+    <span id="fullscreen" class="icon">&#x26F6;</span>
+  </div>
+
+  <div id="device" class="device device-apple-watch-ultra">
+    <div class="device-frame">
+      <div class="device-screen">
+        <webview id="webview" src="https://hypergen.it" />
+      </div>
+    </div>
+    <div class="device-stripe"></div>
+    <div class="device-header"></div>
+    <div class="device-sensors"></div>
+    <div class="device-btns"></div>
+    <div class="device-power"></div>
+    <div class="device-home"></div>
+  </div>
+  <script src="ichrome.js"></script>
+</body>
+
+</html>
