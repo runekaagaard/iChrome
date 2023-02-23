@@ -1,32 +1,44 @@
-var zoom = 1.0
+const win = nw.Window.get()
+const zooms = {
+  nw: 0,
+  wv: 1,
+}
+const wv = document.getElementById("webview")
+
+function nwZoom() { win.zoomLevel = zooms.nw }
+function nwZoomOut() { zooms.nw -= 0.05; nwZoom() }
+function nwZoomIn() { zooms.nw += 0.05; nwZoom() }
+function wvZoom() { wv.setZoom(zooms.wv) }
+function wvZoomOut() { zooms.wv -= 0.02; wvZoom() }
+function wvZoomIn() { zooms.wv += 0.02; wvZoom() }
+function wvReload() { wv.setAttribute("src", wv.getAttribute("src")) }
 
 function icons() {
-  var win = nw.Window.get()
-  
-  document.getElementById("nw-zoom-up").addEventListener("click", function() {
-    win.zoomLevel += 0.1
-  })
-  document.getElementById("nw-zoom-down").addEventListener("click", function() {
-    win.zoomLevel -= 0.1
-  })
-  document.getElementById("webview-zoom-up").addEventListener("click", function() {
-    zoom += 0.02
-    document.getElementById("webview").setZoom(zoom)
-  })
-  document.getElementById("webview-zoom-down").addEventListener("click", function() {
-    zoom -= 0.02
-    document.getElementById("webview").setZoom(zoom)
-  })
-  document.getElementById("fullscreen").addEventListener("click", function() {
-    win.toggleFullscreen()
-  })
+  document.getElementById("nw-zoom-out").addEventListener("click", nwZoomOut)
+  document.getElementById("nw-zoom-in").addEventListener("click", nwZoomIn)
+  document.getElementById("webview-zoom-out").addEventListener("click", wvZoomOut)
+  document.getElementById("webview-zoom-in").addEventListener("click", wvZoomIn)
+  document.getElementById("fullscreen").addEventListener("click", () => win.toggleFullscreen())
+  document.getElementById("reload").addEventListener("click", wvReload)
   document.getElementById("choose-device").addEventListener("change", function(e) {
-    console.log(e, e.target.value)
     document.getElementById("device").className = "device "+ e.target.value
   })
   document.getElementById("go").addEventListener("click", function(e) {
-    document.getElementById("webview").setAttribute("src", document.getElementById("url").value)
+    wv.setAttribute("src", document.getElementById("url").value)
   })
+}
+
+function shortcuts() {
+  for (const [key, active] of [
+    ["Ctrl+Shift+P", nwZoomIn],
+    ["Ctrl+Shift+M", nwZoomOut],
+    ["Ctrl+Shift+I", wvZoomIn],
+    ["Ctrl+Shift+O", wvZoomOut],
+    ["Ctrl+Shift+S", () => { win.toggleFullscreen()}],
+    ["Ctrl+Shift+R", wvReload],
+  ]) {
+    nw.App.registerGlobalHotKey(new nw.Shortcut({key, active}));
+  }
 }
 
 function main() {
@@ -35,15 +47,18 @@ function main() {
     e.request.allow();
   })
 
-  // Register icon clicks.
+  // Register icon clicks and keyboard shortcuts()
   icons()
+  shortcuts()
 
   // Fixes that sometimes the zoomlevel inside the webview is wrong until the zoomlevel is changed.
   setTimeout(function() {
-    var win = nw.Window.get()
-    win.zoomLevel += 0.1
-    win.zoomLevel -= 0.1
+    nwZoom()
+    wvZoom()
   }, 100)
+
+  // Remove scrollbar in webview context.
+  wv.insertCSS({code: "body::-webkit-scrollbar { display: none; }"})
 }
 
 main()
