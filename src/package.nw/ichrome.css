@@ -32,10 +32,14 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar, de
   user-select: none;
 }
 
-
 #icons:hover .icon {
   visibility: visible;
 }
+
+#icons button, #icons input {
+  border: 1px solid grey;
+}
+
 .icon {
   display: inline-block;
   margin-right: 8px;
