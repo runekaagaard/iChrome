@@ -12,8 +12,14 @@ html, body {
   overflow: hidden;
 }
 
-html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
+html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar, device::-webkit-scrollbar {
   display: none;
+  overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
 }
 
 #device {
@@ -26,13 +32,21 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
   user-select: none;
 }
 
+
+#icons:hover .icon {
+  visibility: visible;
+}
 .icon {
   display: inline-block;
   margin-right: 8px;
   user-select: none;
   color: grey;
   cursor: pointer;
+  background-color: transparent;
+  /* visibility: hidden; */
 }
+
+
 
 /* This makes the webview support border-radius.
    I love you Hiren! <3

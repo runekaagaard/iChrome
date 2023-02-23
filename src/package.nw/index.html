@@ -3,18 +3,64 @@
 <head>
   <meta charset="utf-8">
   <title>iChrome</title>
-  <link href="ichrome.css" rel="stylesheet" >
-  <link href="devices.css" rel="stylesheet" >
+  <link href="ichrome.css" rel="stylesheet" />
+  <link href="devices.css" rel="stylesheet" />
 </head>
 
 <body>
   <div id="icons">
-    <span id="plus" class="icon">+</span>
-    <span id="minus" class="icon">-</span>
+    <span id="nw-zoom-down" class="icon">-</span>
+    <span id="nw-zoom-up" class="icon">+</span>
+    <span id="webview-zoom-down" class="icon"><</span>
+    <span id="webview-zoom-up" class="icon">></span>
     <span id="fullscreen" class="icon">&#x26F6;</span>
+    <select id="choose-device" class="icon">
+      <!-- phones -->
+      <optgroup label="Phones">
+        <option value="device-iphone-14-pro">iPhone 14 Pro</option> 
+        <option value="device-iphone-14">iPhone 14</option>
+        <option value="device-iphone-x">iPhone X</option> 
+        <option value="device-iphone-8">iPhone 8</option>
+        <option value="device-the-iphone">The iPhone</option>
+        <option value="device-google-pixel-6-pro">Google Pixel 6 Pro</option> 
+        <option value="device-google-pixel-2-xl">Google Pixel 2 XL</option>
+        <option value="device-google-pixel">Google Pixel</option> 
+        <option value="device-galaxy-s8">Samsung Galaxy S8</option>
+      </optgroup>
+
+      <optgroup label="Computers">
+        <option value="device-macbook-pro">MacBook Pro</option> 
+        <option value="device-imac">iMac</option>
+        <option value="device-imac-pro">iMac Pro</option> 
+        <option value="device-macbook-pro-2018">MacBook Pro (2018)</option>
+        <option value="device-macbook">MacBook</option>
+        <option value="device-surface-book">Surface Book</option>
+        <option value="device-surface-studio">Surface Studio</option>
+      </optgroup>
+      
+      <optgroup label="Tablets">
+        <option value="device-ipad-pro">iPad Pro</option>
+        <option value="device-ipad-pro-2017">iPad Pro (2017)</option> 
+        <option value="device-surface-pro-2017">Surface Pro</option> 
+        
+      </optgroup>
+      
+      <optgroup label="Watches">
+        <option value="device-apple-watch-ultra">Apple Watch Ultra</option>
+        <option value="device-apple-watch-s8">Apple Watch Series 8</option>
+        
+      </optgroup>
+      
+      <optgroup label="Accessories">
+        <option value="device-homepod">HomePod</option> 
+        <option value="device-pro-display-xdr">Pro Display XDR</option> 
+      </optgroup>
+    </select>
+    <input id="url" class="icon" placeholder="enter url and go" />
+    <button id="go" class="icon">go</button>
   </div>
 
-  <div id="device" class="device device-apple-watch-ultra">
+  <div id="device" class="device device-iphone-14">
     <div class="device-frame">
       <div class="device-screen">
         <webview id="webview" src="https://hypergen.it" />
