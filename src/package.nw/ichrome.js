@@ -11,11 +11,11 @@ function icons() {
   })
   document.getElementById("webview-zoom-up").addEventListener("click", function() {
     zoom += 0.02
-    document.getElementById("webview").setZoom(window.zoom + 0.1)
+    document.getElementById("webview").setZoom(window.zoom)
   })
   document.getElementById("webview-zoom-down").addEventListener("click", function() {
     zoom -= 0.02
-    document.getElementById("webview").setZoom(window.zoom + 0.1)
+    document.getElementById("webview").setZoom(window.zoom)
   })
   document.getElementById("fullscreen").addEventListener("click", function() {
     win.toggleFullscreen()
