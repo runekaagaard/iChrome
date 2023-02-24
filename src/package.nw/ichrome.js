@@ -27,13 +27,23 @@ function wvReload() { wv.setAttribute("src", wv.getAttribute("src")) }
 function wvBack() { wv.back() }
 function wvForward() { wv.forward() }
 function toggleFullscreen() { win.toggleFullscreen() }
-function destroyScrollbar() { wv.insertCSS({code: "body::-webkit-scrollbar { display: none; }"}) }
+function destroyScrollbar() { wv.insertCSS({code: "body::-webkit-scrollbar { display: none !important; }"}) }
+function open() {
+  let src = prompt("Enter url:")
+  if (!src.includes("://")) src = "https://" + src
+  wv.setAttribute("src", src)
+  setTimeout(() => {
+    destroyScrollbar()
+  }, 1)
+  
+}
 
 // app //
 
 function commands() {
   // Register icon clicks and keyboard shortcuts.
   for (const [key, id, func] of [
+    ["Ctrl+Shift+G", "open", open],
     ["Ctrl+Shift+M", "nw-zoom-out", nwZoomOut],
     ["Ctrl+Shift+P", "nw-zoom-in", nwZoomIn],
     ["Ctrl+Shift+O", "webview-zoom-out", wvZoomOut],
@@ -51,10 +61,6 @@ function commands() {
   event("choose-device", "change", (e) =>
     document.getElementById("device").className = "device "+ e.target.value
   )
-  event("go", "click", (e) => {
-    wv.setAttribute("src", document.getElementById("url").value)
-    destroyScrollbar()
-  })
   event("color", "input", (e) =>
     document.querySelector("body").style["background-color"] = e.target.value
   )
@@ -68,7 +74,7 @@ function main() {
   commands()
 
   // Fixes that sometimes the zoomlevel inside the webview is wrong until the zoomlevel is changed.
-  setTimeout(function() {
+  setTimeout(() => {
     nwZoom()
     wvZoom()
   }, 100)
