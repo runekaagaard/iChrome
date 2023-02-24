@@ -27,8 +27,27 @@ function wvReload() { wv.setAttribute("src", wv.getAttribute("src")) }
 function wvBack() { wv.back() }
 function wvForward() { wv.forward() }
 function toggleFullscreen() { win.toggleFullscreen() }
-function destroyScrollbar() { wv.insertCSS({code: "body::-webkit-scrollbar { display: none !important; }"}) }
-function open() {
+function destroyScrollbar() {
+  setInterval(function() {
+    wv.executeScript({code: `
+      // Remove _blank attributes. TODO: Use newwindow event instead.
+      var a = document.getElementsByTagName("a");
+      for (i=0; i<a.length; i++) if (a[i].target == "_blank") a[i].target = "_self"
+
+      // Continously hides the scrollbar inside the webview tag.
+      if (!window.allYourBarAreBelongToUs) {
+        window.allYourBarAreBelongToUs = function() {
+            document.head.insertAdjacentHTML(
+              "beforeend",
+              '<style id="hide-scrollbar">*::-webkit-scrollbar { display: none !important; }</style>'
+            )
+        }
+
+      }
+      window.allYourBarAreBelongToUs()`})
+  }, 100)
+}
+function openUrl() {
   let src = prompt("Enter url:")
   if (!src.includes("://")) src = "https://" + src
   wv.setAttribute("src", src)
@@ -43,7 +62,7 @@ function open() {
 function commands() {
   // Register icon clicks and keyboard shortcuts.
   for (const [key, id, func] of [
-    ["Ctrl+Shift+G", "open", open],
+    ["Ctrl+Shift+G", "open", openUrl],
     ["Ctrl+Shift+M", "nw-zoom-out", nwZoomOut],
     ["Ctrl+Shift+P", "nw-zoom-in", nwZoomIn],
     ["Ctrl+Shift+O", "webview-zoom-out", wvZoomOut],

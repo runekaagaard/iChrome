@@ -2,7 +2,7 @@
     "main": "package.nw/index.html",
     "name": "iChrome",
     "window": {
-        "height": 900,
+        "height": 940,
         "width": 600
     },
     "chromium-args": "--disable-features=nw2"
