@@ -31,8 +31,10 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
   visibility: visible;
 }
 
-#icons button, #icons input {
+#icons button, #icons input, #icons select, #icons button:focus, #icons input:focus, #icons select:focus  {
   border: 1px solid grey;
+  background-color: transparent;
+  outline: none;
 }
 
 .icon {
@@ -45,6 +47,9 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
   /* visibility: hidden; */
 }
 
+#color {
+  border: none !important;
+}
 
 
 /* This makes the webview support border-radius.

@@ -776,7 +776,8 @@
 .device-the-iphone .device-frame::after {
   border: 4px solid gainsboro;
   border-radius: 38px;
-  content: "";
+  /* Make the webview scrollable - changes the layout a bit. TODO fix without changing layout. */
+  /* content: ""; */
   height: 590px;
   left: 13px;
   position: absolute;
@@ -1058,7 +1059,8 @@
 }
 
 .device-google-pixel-2-xl .device-header {
-  height: 832px;
+  /* Make the webview scrollable - changes the layout a bit. TODO fix without changing layout. */
+  /* height: 832px; */
   left: 50%;
   margin-left: -150px;
   position: absolute;
