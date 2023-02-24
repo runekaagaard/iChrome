@@ -27,7 +27,7 @@ function wvReload() { wv.setAttribute("src", wv.getAttribute("src")) }
 function wvBack() { wv.back() }
 function wvForward() { wv.forward() }
 function toggleFullscreen() { win.toggleFullscreen() }
-function destroyScrollbar() {
+function webviewHacks() {
   setInterval(function() {
     wv.executeScript({code: `
       // Remove _blank attributes. TODO: Use newwindow event instead.
@@ -52,7 +52,7 @@ function openUrl() {
   if (!src.includes("://")) src = "https://" + src
   wv.setAttribute("src", src)
   setTimeout(() => {
-    destroyScrollbar()
+    webviewHacks()
   }, 1)
   
 }
@@ -98,8 +98,7 @@ function main() {
     wvZoom()
   }, 100)
 
-  // Remove scrollbar in webview context.
-  destroyScrollbar()
+  webviewHacks()
 }
 
 main()
