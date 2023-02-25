@@ -1,0 +1,11 @@
+{
+  "name": "iChrome",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:runekaagaard/iChrome.git",
+  "author": "Rune Kaagaard <rumi.kg@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "nw-builder": "^4.1.0-beta.0"
+  }
+}
