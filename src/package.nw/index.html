@@ -5,22 +5,21 @@
   <title>iChrome</title>
   <link href="ichrome.css" rel="stylesheet" />
   <link href="devices.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </head>
 
 <body>
   <div id="icons">
-    <span id="open" class="icon">O</span>
-    <span id="nw-zoom-out" class="icon">-</span>
-    <span id="nw-zoom-in" class="icon">+</span>
-    <span id="webview-zoom-out" class="icon"><</span>
-    <span id="webview-zoom-in" class="icon">></span>
-    <span id="back" class="icon">←</span>
-    <span id="forward" class="icon">→</span>
-    <span id="fullscreen" class="icon">&#x26F6;</span>
-    <span id="reload" class="icon">r</span>
-    <input id="color" class="icon" type="color" value="#FFDACB" />
+    <i id="open" class="icon fa-regular fa-file mr2" title="Go to url"></i>
+    <i id="fullscreen" class="icon fa-solid fa-expand mr2" title="Toogle fullscreen"></i>
+    <i id="reload" class="icon fa-solid fa-rotate-right mr2" title="Reload device"></i>
+    <i id="nw-zoom-out" class="icon fa-regular fa-square-minus mr1" title="Zoom out window"></i>
+    <i id="nw-zoom-in" class="icon fa-regular fa-square-plus mr2" title="Zoom in window"></i>
+    <i id="webview-zoom-out" class="icon fa-solid fa-magnifying-glass-minus mr1" title="Zoom out device"></i>
+    <i id="webview-zoom-in" class="icon fa-solid fa-magnifying-glass-plus mr2" title="Zoom in device"></i>
+    <input id="color" class="icon mr2" type="color" value="#FFDACB" title="Select background color" />
     
-    <select id="choose-device" class="icon">
+    <select id="choose-device" class="icon mr2" title="Choose device">
       <optgroup label="Phones">
         <option value="device-iphone-14-pro">iPhone 14 Pro</option> 
         <option value="device-iphone-14">iPhone 14</option>
@@ -55,6 +54,9 @@
         <option value="device-pro-display-xdr">Pro Display XDR</option> 
       </optgroup>
     </select>
+
+    <i id="back" class="icon fa-solid fa-arrow-left mr1" title="Device back"></i>
+    <i id="forward" class="icon fa-solid fa-arrow-right mr2" title="Device forward"></i>
   </div>
 
   <div id="device" class="device device-iphone-14">

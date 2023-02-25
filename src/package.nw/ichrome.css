@@ -1,3 +1,38 @@
+/* Reset */
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  position: relative;
+  font-family: system-ui, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  min-height: 100%;
+}
+body {
+  position: relative;
+  min-height: 100vh;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+input,
+textarea,
+button {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+/* App */
+
 body {
   background-color: #EEC6C0;
   margin: 0;
@@ -24,8 +59,8 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
 
 #icons {
   text-align: center;
-  height: 40px;
   user-select: none;
+  margin: 8px 0;
 }
 
 #icons:hover .icon {
@@ -39,19 +74,30 @@ html::-webkit-scrollbar, body::-webkit-scrollbar, webview::-webkit-scrollbar {
 }
 
 .icon {
-  display: inline-block;
-  margin-right: 8px;
   user-select: none;
   color: grey;
   cursor: pointer;
   background-color: transparent;
-  /* visibility: hidden; */
+  visibility: hidden;
 }
 
 #color {
+  width: 25px;
+  height: 21px;
   border: none !important;
 }
 
+.mr1 {
+  margin-right: 0px;
+}
+
+.mr2 {
+  margin-right: 12px;
+}
+
+select {
+  height: 18px;
+}
 
 /* This makes the webview support border-radius.
    I love you Hiren! <3

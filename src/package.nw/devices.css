@@ -1070,15 +1070,16 @@
 
 .device-google-pixel-2-xl .device-header::after,
 .device-google-pixel-2-xl .device-header::before {
-  background: #333;
-  border-radius: 3px;
-  content: "";
-  height: 6px;
-  left: 50%;
-  margin-left: -73px;
-  margin-top: -3px;
-  position: absolute;
-  width: 146px;
+  /* Remove artificats. TODO fix. */
+  /* background: #333;
+     border-radius: 3px;
+     content: "";
+     height: 6px;
+     left: 50%;
+     margin-left: -73px;
+     margin-top: -3px;
+     position: absolute;
+     width: 146px; */
 }
 
 .device-google-pixel-2-xl .device-header::after {
